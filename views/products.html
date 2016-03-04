@@ -26,20 +26,20 @@
 	 </form>
 
 	{% for product in products %}
-		<div class="row" style="">
-	 		<div class="col-sm-1 text-container" style="background-color: {{product.bgColor}}">
-	 			<div style="line-height: 26px;"><a href="">{{product.name}}</a></div>
+		<div class="row">
+	 		<div class="col-sm-1 text-container" style="background-color: {{product.bgColor}}; padding-left: 7px; margin-left: 15px; padding-top: 4px; padding-bottom: 4px;">
+	 			<div style="line-height: 26px;"><a href="/products/{{product.id}}">{{product.name}}</a></div>
 	 		</div>
-	 		<div class="col-sm-1" style="background-color: {{product.bgColor}}; max-width: 60px;">	
+	 		<div class="col-sm-1" style="max-width: 60px; background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px;">	
 	 			<input class="form-inline" size=3 type="text" id="prodXStock" class="form-control" required="" value="{{product.inStock}}">
 	 		</div>
-	 		<div class="col-sm-2" style="background-color: {{product.bgColor}}">
+	 		<div class="col-sm-2" style="background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px;">
 		    	<button type="submit">Update # in Stock</button>
 		    </div>
-		    <div class="col-sm-2" style="background-color: {{product.bgColor}}">
+		    <div class="col-sm-2" style="background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px; padding-right: 7px;">
 		    	<button class="btn-{{product.btnType}}" type="submit">{{product.disOrRe}}</button>
-		    </div>	
-	 	</div>
+			</div>
+		</div>
 	{% endfor %}
 
   <ul class="list-unstyled">

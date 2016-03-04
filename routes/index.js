@@ -11,8 +11,8 @@ router.get('/products',function(req,res) {
 	res.render("products",{
 		actives: {products: ' class=active', home: ''},
 		products: [
-					{name: 'Product X', inStock: 3, description: "This is product x", disOrRe: "Discontinue", btnType: "Danger", bgColor: "white"},
-					{name: 'Product Y', inStock: 0, description: "This is product y", disOrRe: "Recontinue", btnType: "Primary", bgColor: "grey"}
+					{id: "x", name: 'Product X', inStock: 3, description: "This is product x", disOrRe: "Discontinue", btnType: "Danger", bgColor: "white"},
+					{id: "y", name: 'Product Y', inStock: 0, description: "This is product y", disOrRe: "Recontinue", btnType: "Primary", bgColor: "#cccccc"}
 				]
 	});
 })
