@@ -4,7 +4,9 @@
   "description": "Northwind Products site, based on Eric's wireframes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+     "start": "node -e html,js,css app.js",
+     "dev":  "nodemon app.js",
+     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "John Gruska",
   "license": "ISC",
