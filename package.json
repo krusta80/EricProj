@@ -4,14 +4,15 @@
   "description": "Northwind Products site, based on Eric's wireframes",
   "main": "index.js",
   "scripts": {
-     "start": "node -e html,js,css app.js",
-     "dev":  "nodemon app.js",
-     "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -e html,js,css app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "John Gruska",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
