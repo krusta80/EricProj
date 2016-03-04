@@ -1,8 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <h3>Products</h3>
-  <hr>
+  <div class="row">
+  	<div class="col-md-12">
+  		<h3>Products</h3>
+		<a href="">Show Active Only</a>
+  	</div>
+  </div>
+  <hr style="margin-top: 0; margin-bottom: 20px;">
+
+	<form class="form-inline" role="form">
+	    <div class="row-md">
+		    <div class="col-sm-4">
+		    	<input class="form-inline" style="width:100%" type="text" id="productName" class="form-control" placeholder="name" required="" autofocus="">
+		    </div>
+		    <div class="col-sm-2">
+		    	<button type="submit" class="pull-right">Add a Product</button>
+		    </div>
+	 	</div>
+	 	<div class="row-md" style="clear: both;">
+	 		<div class="col-sm-6 top-buffer">
+	 			<textarea style="width:100%" id="productDescription" placeholder="Description"></textarea>
+	 		</div>	
+	 	</div>
+	 </form>
+
   <ul class="list-unstyled">
     <!-- PLACEHOLDER LIST OF PAGES -->
   </ul>
