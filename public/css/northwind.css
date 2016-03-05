@@ -9,3 +9,10 @@
   display: flex;
   flex-direction: column;
 }
+
+.row.product .col-sm-1 {
+     border-top: 1px solid;
+}
+.row.product .col-sm-2 {
+     border-top: 1px solid;
+}

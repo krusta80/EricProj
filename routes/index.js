@@ -11,9 +11,10 @@ router.get('/',function(req,res) {
 router.get('/products',function(req,res) {
 	var search = {};
 	if(req.query.type === 'active') search = {discontinued: false};
-	Product.find(search).then(function(products) {
+	Product.find(search).sort('name').then(function(products) {
 		res.render("products",{
 		discontinued: search.discontinued === undefined,
+		selected: req.query.id,
 		type: req.query.type,
 		actives: {products: ' class=active', home: ''},
 		products: products
@@ -22,7 +23,6 @@ router.get('/products',function(req,res) {
 })
 
 router.post('/products/add', function(req,res) {
-
 	var product = new Product();
 	product.name = req.body.name;
 	product.description = req.body.description;
@@ -60,6 +60,18 @@ router.get('/products/quantity/:id', function(req,res) {
 			product.quantity = req.query.quantity;
 			return product.save();
 		})
+		.then(function() {
+			res.redirect('/products?type='+req.query.type);
+		})
+		.catch(function(error){
+			console.log(error);
+			res.redirect('/products?type='+req.query.type);	
+		});
+});
+
+router.get('/products/delete/:id', function(req,res) {
+
+	Product.findByIdAndRemove(req.params.id)
 		.then(function() {
 			res.redirect('/products?type='+req.query.type);
 		})
