@@ -20,4 +20,4 @@ swig.setDefaults({cache : false});
 
 app.use(express.static(__dirname + "/public"));
 app.use(morgan('combined'));
-app.use('/',router);
+app.use('/', jsonParser, urlParser, router);

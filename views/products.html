@@ -4,15 +4,20 @@
   <div class="row">
   	<div class="col-md-12">
   		<h3>Products</h3>
-		<a href="">Show Active Only</a>
+		{% if discontinued %}
+			<a href="/products?type=active">Show Active Only</a>
+		{% else %}
+			<a href="/products">Show All Products</a>
+		{% endif %}
+		
   	</div>
   </div>
   <hr style="margin-top: 0; margin-bottom: 20px;">
 
-	<form class="form-inline" role="form">
+	<form class="form-inline" role="form" method="post" action="/products/add?type={{type}}">
 	    <div class="row">
 		    <div class="col-sm-4">
-		    	<input class="form-inline" style="width:100%" type="text" id="productName" class="form-control" placeholder="name" required="" autofocus="">
+		    	<input class="form-inline" style="width:100%" type="text" id="productName" name="name" class="form-control" placeholder="name" required="" autofocus="">
 		    </div>
 		    <div class="col-sm-2">
 		    	<button type="submit" class="pull-right">Add a Product</button>
@@ -20,24 +25,24 @@
 	 	</div>
 	 	<div class="row">
 	 		<div class="col-sm-6">
-	 			<textarea style="width:100%" id="productDescription" placeholder="Description"></textarea>
+	 			<textarea style="width:100%" id="productDescription" name="description" placeholder="Description"></textarea>
 	 		</div>	
 	 	</div>
 	 </form>
 
 	{% for product in products %}
 		<div class="row">
-	 		<div class="col-sm-1 text-container" style="background-color: {{product.bgColor}}; padding-left: 7px; margin-left: 15px; padding-top: 4px; padding-bottom: 4px;">
+	 		<div class="col-sm-2 text-container nowrap" style="background-color: {{product.bgColor}}; padding-left: 7px; margin-left: 15px; padding-top: 4px; padding-bottom: 4px;">
 	 			<div style="line-height: 26px;"><a href="/products/{{product.id}}">{{product.name}}</a></div>
 	 		</div>
 	 		<div class="col-sm-1" style="max-width: 60px; background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px;">	
-	 			<input class="form-inline" size=3 type="text" id="prodXStock" class="form-control" required="" value="{{product.inStock}}">
+	 			<input class="form-inline" size=3 type="text" id="{{product.id}}_qty" class="form-control" required="" value="{{product.quantity}}">
 	 		</div>
 	 		<div class="col-sm-2" style="background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px;">
-		    	<button type="submit">Update # in Stock</button>
+		    	<button type="submit" onclick="window.location='/products/quantity/{{product.id}}?type={{type}}&quantity='+document.getElementById('{{product.id}}_qty').value">Update # in Stock</button>
 		    </div>
 		    <div class="col-sm-2" style="background-color: {{product.bgColor}}; padding-top: 4px; padding-bottom: 4px; padding-right: 7px;">
-		    	<button class="btn-{{product.btnType}}" type="submit">{{product.disOrRe}}</button>
+		    	<button class="btn-{{product.btnType}}" type="submit" onclick="window.location='/products/toggle/{{product.id}}?type={{type}}'">{{product.disOrRe}}</button>
 			</div>
 		</div>
 	{% endfor %}
