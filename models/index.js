@@ -10,11 +10,14 @@ var productSchema = new mongoose.Schema({
 	discontinued: {type: Boolean, default: false}
 });
 
+//some of this looks like UI logic.. no? might be a better place for it
+//nice!
 productSchema.virtual('disOrRe').get(function() {
 	if(this.discontinued) return "Recontinue ";
 	else return "Discontinue";
 });
 
+//cool
 productSchema.virtual('btnType').get(function() {
 	if(this.discontinued) return "Primary";
 	else return "Danger";
@@ -25,6 +28,6 @@ productSchema.virtual('bgColor').get(function() {
 	else return "white";
 });
 
-var productModel = mongoose.model('Product',productSchema);
+Product = mongoose.model('Product',productSchema);
 
-module.exports = productModel;
+module.exports = Product;
